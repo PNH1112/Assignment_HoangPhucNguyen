@@ -1,10 +1,3 @@
-1.
-"""
-name = input("What is your name?")
-print("Hello,", name)
-"""
 
-2.
-"""
+print("Hello, Phuc!")
 
-"""
