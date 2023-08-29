@@ -41,4 +41,3 @@ kilo = gr//1000
 gram = gr % 1000
 print("The weight in modern units")
 print(f"{kilo} kilograms and, {gram:5.2f} grams")
-.
