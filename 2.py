@@ -1,4 +1,4 @@
-"""
+
 name = input("What's your name?")
 print("Hello,", name)
 
@@ -41,6 +41,14 @@ kilo = gr//1000
 gram = gr % 1000
 print("The weight in modern units")
 print(f"{kilo} kilograms and, {gram:5.2f} grams")
-"""
 
-i cant do a 2.6 assignment123
+import random
+no = int(input("Choose 3 or 4 digit code?"))
+if no == 3:
+    code = [random.randint(0, 9) for _ in range(3)]
+    print("Here is your 3-digit code", code)
+elif no== 4:
+    code = [random.randint(1,6) for _ in range(4)]
+    print("Here is your 4-digit code", code)
+else:
+    print("Please input 3 or 4")
