@@ -1,5 +1,5 @@
 
-#1
+#1`
 import random
 def all():
     dice = random.randint(1, 6)
@@ -27,7 +27,7 @@ def maxdice():
     return list
 maxdice()
 
-#3
+#6.3
 def gasoline(lit):
     gallon = lit*3.78541
     return gallon
@@ -35,27 +35,37 @@ while True:
     lit = int(input("Enter your lit to convert to gallon: "))
     if lit < 0 :
         break
-    print(f"{lit} litres conver to {gasoline(lit)} gallons")
+    print(f"{lit} littes conver to {gasoline(lit)} gallons")
 
 #4
-list = [100,200,300,1,16,123]
-def all(list):
-    a = sum(list)
-    print(a)
-    return a
-all(list)
+def sumlist():
+    total = sum(list_number)
+    return total
+list_number = []
+while True:
+    number = int(input("Enter your number(negative to quit): "))
+    if number <0 :
+        break
+    else:
+        list_number.append(number)
+print(f"Sum of all number have been inputed: {sumlist()}")
 
 #5
-list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-def all(list):
-    list1 = []
-    for i in list:
-        if i%2 == 0:
-            list1.append(i)
-    print(list1)
-    return list1
-all(list)
-
+def list_all():
+    for i in list_original:
+        if i % 2 == 0:
+            list_even.append(i)
+    return list_even
+list_original=[]
+list_even=[]
+while True:
+    number = int(input("Enter your number(negative to quit): "))
+    if number < 0:
+        break
+    else:
+        list_original.append(number)
+print(f"All number have been inputed: {list_original}")
+print(f"Even number: {list_all()}")
 #6
 #d is the diameter of the pizza(cm)
 #p is the price of the pizza
