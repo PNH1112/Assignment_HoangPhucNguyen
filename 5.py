@@ -18,14 +18,13 @@ while number != "":
     number = input("Enter your number: ")
     if number == "":
         break
-    numb = float(number)
+    numb = int(number)
     list.append(numb)
 list.sort(reverse=True)
-print(list[:5])
+print(list[0:5])
 
 #3
 number = int(input("Enter your number: "))
-numb = 1
 count = 0
 for i in range (2, number):
     if number % i == 0:
