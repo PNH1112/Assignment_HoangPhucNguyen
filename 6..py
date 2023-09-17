@@ -28,7 +28,7 @@ def maxdice():
 maxdice()
 
 #3
-def gasoline(a):
+def gasoline(lit):
     gallon = lit*3.78541
     return gallon
 while True:
