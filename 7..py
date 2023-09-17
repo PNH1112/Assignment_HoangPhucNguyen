@@ -34,14 +34,13 @@ def list_of_name():
     print(set1)
 print1 = list_of_name()
 
+#3
 airport = {
     "EFAA": "Aavahelukka",
     "EFAH": "Ahmosuo Airport",
     "EFAL": "Alavus Airfield",
     "EFEJ": "Jorvin Hospital Heliport"
 }
-
-#3
 def choose(airport):
     while True:
         user_input = input("Choose new, fetch, or quit: ").lower()
