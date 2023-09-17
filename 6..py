@@ -28,16 +28,14 @@ def maxdice():
 maxdice()
 
 #3
-def convert():
-    while True:
-        gallon = float(input("Enter the volume of gallon need to be converted(input negative number to stop): "))
-        lit = gallon * 3.78541
-        if gallon < 0:
-            print("Bye")
-            break
-        print(f"{gallon} gallon(s) converts to {lit:.2f} lit(es)")
-    return lit
-convert()
+def gasoline(a):
+    gallon = lit*3.78541
+    return gallon
+while True:
+    lit = int(input("Enter your lit to convert to gallon: "))
+    if lit < 0 :
+        break
+    print(f"{lit} litres conver to {gasoline(lit)} gallons")
 
 #4
 list = [100,200,300,1,16,123]
