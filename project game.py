@@ -49,10 +49,8 @@ def game_road1():
 
     for la1, lo1,i1 in row:
         location1 = (la1,lo1)
-        print(f"{map1[move1]}'s airport is : {i1}")
     for la2, lo2,i2 in row2:
         location2 = (la2,lo2)
-        print(f"{map1[move1 +1]}'s airport is : {i2}")
     distance1 = geodesic(location1, location2).kilometers
     print(f"{distance1:.0f} km from +++{i1}+++ to +++{i2}+++")
     return distance1
@@ -71,56 +69,65 @@ def game_road2():
     else:
         for la1, lo1,i1 in row:
             location1 = (la1,lo1)
-            print(f"{map2[move2]}'s airport is : {i1}")
         for la2, lo2,i2 in row2:
-            print(f"{map2[move2 +1]}'s airport is : {i2}")
             location2 = (la2,lo2)
         distance2 = geodesic(location1, location2).kilometers
         print(f"{distance2:.0f} km from +++{i1}+++ to +++{i2}+++")
     return distance2
 
-
+p1_co2_budget = []
+p2_co2_budget = []
 while True:
     if move1 == 11 or move2 == 11:
         break
 
     ask1 = input(f"+++{player_1}, enter to roll.")
     if ask1 == "":
-        player1_dice1 = random.randint(1, 6)
-        player1_dice2 = random.randint(1, 6)
-        print(f"Dice 1: {player1_dice1}")
-        print(f"Dice 2: {player1_dice2}")
-        print(f"Sum of 2 dices : {(player1_dice1 + player1_dice2)}")
-        km1 = (player1_dice1 + player1_dice2) * 100
-        print(f"Total fuel that {player_1} have: {km1} CO2 Unit")
-        if game_road1() - km1 < 0:
+        player1_dice = random.randint(1, 6)
+        print(f"Dice: {player1_dice}")
+        p1_co2_unit = player1_dice * 100
+        p1_co2_budget.append(p1_co2_unit)
+        co2_budget_1 = sum(p1_co2_budget)
+        print(f"Total fuel that {player_1} have: {p1_co2_unit} CO2 Unit")
+        co2_left_1 = co2_budget_1 - game_road1()
+        if co2_budget_1 - game_road1() > 0:
             move1 += 1
             print(f"{player_1} flight to next airport: {map1[move1]} ")
             print("")
+            p1_co2_budget.remove(co2_budget_1)
+            p1_co2_budget.append(co2_left_1)
+            print(f"{player_1}'s CO2 UNIT left: {co2_left_1:.0f}")
         else:
-            print(f"{player_1} doesn't have enough fuel, standstill for one turn")
+            print(f"{player_1} doesn't have enough fuel, standstill for one turn and add {p1_co2_unit} co2 Unit")
+            p1_co2_budget.append(p1_co2_unit)
             print("")
     else:
         print(f"Wrong input! {player_1} lost 1 turn!")
+    print(f"{player_1}'s CO2 UNIT left: {co2_budget_1:.0f}")
 
-    ask2 = input(f"+++{player_2}, enter to roll: ")
+    ask2 = input(f"+++{player_2}, enter to roll.")
     if ask2 == "":
-        player2_dice1 = random.randint(1, 6)
-        player2_dice2 = random.randint(1, 6)
-        print(f"Dice 1: {player2_dice1}")
-        print(f"Dice 2: {player2_dice2}")
-        print(f"Sum of 2 dices : {(player2_dice1 + player2_dice2)}")
-        km2 = (player2_dice1 + player2_dice2) * 100
-        print(f"Total fuel that {player_2} have: {km2} CO2 Unit")
-        if game_road2() - km2 < 0:
+        player2_dice = random.randint(1, 6)
+        print(f"Dice: {player2_dice}")
+        p2_co2_unit = player2_dice * 100
+        p2_co2_budget.append(p2_co2_unit)
+        co2_budget_2 = sum(p2_co2_budget)
+        print(f"Total fuel that {player_2} have: {p2_co2_unit} CO2 Unit")
+        if co2_budget_2 - game_road2() > 0:
             move2 += 1
             print(f"{player_2} flight to next airport: {map2[move2]} ")
             print("")
+            co2_left_2 = f"{co2_budget_2 - game_road2()}.0f"
+            p2_co2_budget.remove(co2_budget_2)
+            p2_co2_budget.append(co2_left_2)
+            print(f"{player_2}'s CO2 UNIT left: {co2_left_2:.0f}")
         else:
-            print(f"{player_2} doesn't have enough fuel, standstill for one turn")
+            print(f"{player_2} doesn't have enough fuel, standstill for one turn and add {p2_co2_unit} co2 Unit")
+            p2_co2_budget.append(p2_co2_unit)
             print("")
     else:
-        print(f"Wrong input! {player_2} lost 1 turn!")
+        print(f"Wrong input! {player_1} lost 1 turn!")
+    print(f"{player_2}'s CO2 UNIT left: {co2_budget_2}")
 
 if move1 == 11:
     print(f"Congratulation {player_1}, you are the WINNER!")
